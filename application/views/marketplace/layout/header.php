@@ -38,7 +38,8 @@
 					<li class=" <?php if ($page=='product') {echo 'active';} ?> dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Produk <span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="<?php echo base_url('products'); ?>">Kerudung1</a></li>
+							<li><a href="<?php echo base_url('marketplace/product/pasminah'); ?>">Pasminah</a></li>
+							<li><a href="<?php echo base_url('marketplace/product/kotak'); ?>">Kotak</a></li>
 						</ul>
 					</li>
 					<li <?php if ($page=='mengenai kami') {echo 'active';} ?>><a href="#">Mengenai Kami</a></li>

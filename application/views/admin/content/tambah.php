@@ -14,12 +14,12 @@
                             Tambah Produk eHijab
                         </div>
                         <div class="panel-body">
-                            <form>
+                        <?php echo form_open_multipart('admin/tambahProduk'); ?>
                                 <p class="col-md-6"><input type="text" class="form-control" placeholder="Id Produk" name="id"></p>
-                                <p class="col-md-6"><input type="text" class="form-control" placeholder="Nama Produk" name="id"></p>
-                                <p class="col-md-6"><input type="text" class="form-control" placeholder="Harga" name="id"></p>
-                                <p class="col-md-6"><input type="file" class="form-control" placeholder="Harga" name="id"></p>
-                                <p class="col-md-6"><select class="form-control">
+                                <p class="col-md-6"><input type="text" class="form-control" placeholder="Nama Produk" name="nama"></p>
+                                <p class="col-md-6"><input type="text" class="form-control" placeholder="Harga" name="harga"></p>
+                                <p class="col-md-6"><input type="file" class="form-control" placeholder="Harga" name="gambar"></p>
+                                <p class="col-md-6"><select name="kategori" class="form-control">
                                     <option selected="" disabled="">--kategori--</option>
                                     <option>Pasminah</option>
                                     <option>Kotak</option>

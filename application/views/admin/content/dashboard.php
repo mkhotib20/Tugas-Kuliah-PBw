@@ -3,8 +3,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">Dashboard</h1>
-                    <hr>
-                    <p>Selamat datang Username, anda memiliki hak kontrol penuh atas eHijab. Diantaranya : </p>
+                    <p>Selamat datang <?php echo $this->session->userdata('nama'); ?>, anda memiliki hak kontrol penuh atas eHijab. Diantaranya : </p>
                     <ol>
                         <li>Menambahkan Produk</li>
                         <li>Merubah informasi produk</li>

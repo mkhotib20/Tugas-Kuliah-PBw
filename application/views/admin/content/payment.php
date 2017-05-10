@@ -48,7 +48,7 @@
 							cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 							proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 						</p>
-						<a style="height: 40px; margin-left: 400px; padding-top: 10px; " href="<?php echo base_url('marketplace/payment/anjay') ?>" class="btn btn-primary">Beli Sekarang</a>
+						<button style="height: 50px; margin-left: 400px;" class="btn btn-primary .btn-outline">Beli Sekarang</button>
 					</div>
 					<?php } ?>
 				</div>
@@ -78,13 +78,3 @@
 			</div>
 		</div>
 	</section>
-
-	<script>
-		function hanyaAngka(evt) {
-		  var charCode = (evt.which) ? evt.which : event.keyCode
-		   if (charCode > 31 && (charCode < 48 || charCode > 57))
- 
-		    return false;
-		  return true;
-		}
-	</script>

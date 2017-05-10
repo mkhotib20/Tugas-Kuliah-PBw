@@ -5,12 +5,21 @@
 /**
 *
 */
-class admin extends CI_Controller{
-
+class admin extends CI_Controller{	
 	function index(){
 		if ($this->session->has_userdata('username')) {
 			$this->load->view('admin/layout/nav');
 			$this->load->view('admin/content/dashboard');
+			$this->load->view('admin/layout/footer');
+		}
+		else{
+			redirect(base_url('admin/masuk'));
+		}
+	}
+	function setting(){
+		if ($this->session->has_userdata('username')) {
+			$this->load->view('admin/layout/nav');
+			$this->load->view('admin/content/setting');
 			$this->load->view('admin/layout/footer');
 		}
 		else{
@@ -22,8 +31,10 @@ class admin extends CI_Controller{
 	}
 	function produk(){
 		if ($this->session->has_userdata('username')) {
+			$data = $this->data->read('produk')->result_array();
+			$tampil['produk'] = $data;
 			$this->load->view('admin/layout/nav');
-			$this->load->view('admin/content/produk');
+			$this->load->view('admin/content/produk', $tampil);
 			$this->load->view('admin/layout/footer');
 		}
 		else{
@@ -45,7 +56,7 @@ class admin extends CI_Controller{
 	function cek_login(){
 		$username = $this->input->post('username');
 		$password = $this->input->post('password');
-		$read = $this->data->readWh('admin_user', $username)->result_array();
+		$read = $this->data->readWh('admin_user', $username, 'admin_username')->result_array();
 		foreach ($read as $r) {
 			$user = $r['admin_username'];
 			$pass = $r['admin_password'];
@@ -53,11 +64,7 @@ class admin extends CI_Controller{
 			$email = $r['admin_email'];
 		}
 		echo '<br>';
-		$key = $this->config->item('encryption_key');
-	    $salt1 = hash('sha512', $key . $password);
-	    $salt2 = hash('sha512', $password . $key);
-	    $hashed_password = hash('sha512', $salt1 . $password . $salt2);
-	    
+		$hashed_password = $this->data->rahasia($password);
 		if ($username==$user) {
 			if ($hashed_password==$pass) {
 				$data = array(
@@ -82,6 +89,51 @@ class admin extends CI_Controller{
 		$this->session->sess_destroy();
 		redirect(base_url('admin'));
 	}
+	function tambahProduk(){
+		$config['upload_path']          = './assets/marketplace/img/';
+        $config['allowed_types']        = 'gif|jpg|png';
+        $config['max_size']             = 5000;
+        $config['max_width']            = 2048;
+        $config['max_height']           = 2048;
+
+        $this->load->library('upload', $config);
+        if ( ! $this->upload->do_upload('gambar')) {
+			echo print_r(array('error' => $this->upload->display_errors()));	
+			//redirect(base_url());
+		}
+		else{
+			$url = base_url().$config['upload_path'].$this->upload->data('file_name');
+			$id = $this->input->post('id');
+			$nama = $this->input->post('nama');
+			$harga = $this->input->post('harga');
+			$kategori = $this->input->post('kategori');
+			$data = array(
+				'id_produk' => $id,
+				'nama_produk' => $nama,
+				'harga_produk' => $harga,
+				'kategori' => $kategori,
+				'harga_produk' => $harga,
+				'gambar_produk' => $url,
+				'timestamp' => mdate(time()),
+				 
+				);
+			$insert= $this->data->insertData('produk', $data);
+			redirect($uri = base_url('admin/tambah'), $method = 'auto', $code = NULL);
+		}
+	}
+	function ubahPass(){
+		$username = $this->session->userdata('username');
+		$pasBaru = $this->
+		$data = $this->data->readWh('admin_user', $username)->result_array();
+		foreach ($data as $d) {
+			$password = $d['admin_password'];
+		}
+		$passLama = $this->data->rahasia($this->input->post('pass-lama'));
+		if ($passLama == $password) {
+			echo 'yups ner';
+		}
+	}
+	
 
 }
  ?>

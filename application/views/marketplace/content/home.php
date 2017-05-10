@@ -48,54 +48,21 @@
 			<h1>Produk Terbaru</h1>
 							<hr>
 			<div class="row">
+			<?php foreach ($produk as $p) {?>
 				<div class="col-md-3">
 					<div class="box">
 						<div class="img">
-							<img src="<?php echo base_url('assets/marketplace/img/slide-1.jpg"') ?>">
+							<img style="max-height: 170px;" src="<?php echo $p['gambar_produk'] ?>">
 						</div>
 						<div class="caption">
-							<h3>Kerudung</h3>
-							<p>Rp. 100.000,-</p>
-							<a class="btn btn-default" href="<?php echo base_url('detail-product'); ?>">Detail</a>							
+							<p><span class="glyphicon glyphicon-tags"/> <?php echo $p['kategori'] ?></p>
+							<h3><?php echo $p['nama_produk'] ?></h3>
+							<p><?php echo 'Rp. '.number_format($p['harga_produk'], 2, ',', '.'); ?></p>
+							<a class="btn btn-default" href="<?php echo base_url('marketplace/detail/'.$p['id_produk']); ?>">Detail</a>							
 						</div>
 					</div>
 				</div>
-				<div class="col-md-3">
-					<div class="box">
-						<div class="img">
-							<img src="<?php echo base_url('assets/marketplace/img/slide-1.jpg"') ?>">
-						</div>
-						<div class="caption">
-							<h3>Kerudung</h3>
-							<p>Rp. 100.000,-</p>
-							<a class="btn btn-default" href="<?php echo base_url('detail-product'); ?>">Detail</a>							
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3">
-					<div class="box">
-						<div class="img">
-							<img src="<?php echo base_url('assets/marketplace/img/slide-1.jpg"') ?>">
-						</div>
-						<div class="caption">
-							<h3>Kerudung</h3>
-							<p>Rp. 100.000,-</p>
-							<a class="btn btn-default" href="<?php echo base_url('detail-product'); ?>">Detail</a>							
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3">
-					<div class="box">
-						<div class="img">
-							<img src="<?php echo base_url('assets/marketplace/img/slide-1.jpg"') ?>">
-						</div>
-						<div class="caption">
-							<h3>Kerudung</h3>
-							<p>Rp. 100.000,-</p>
-							<a class="btn btn-default" href="<?php echo base_url('detail-product'); ?>">Detail</a>							
-						</div>
-					</div>
-				</div>
+			<?php } ?>
 			</div>
 		</div>
 	</section>

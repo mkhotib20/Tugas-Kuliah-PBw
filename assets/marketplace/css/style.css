@@ -94,7 +94,8 @@ body{
 	height: 50px;	
 }
 .dropdown-menu li a:hover{
-	background-color: grey !important;
+	background-color: #136a89 !important;
+	color: white !important;
 }
 .navbar-form .input-group input{
 	border: 0px solid white !important;
@@ -118,7 +119,7 @@ body{
 }
 .box{
 	margin-bottom: 30px !important;
-	height: 350px;
+	height: 390px;
 	width: 100%;
 	background-color: white;
 	-moz-transition: all 0.3s ease-in-out;
@@ -195,4 +196,58 @@ footer p{
 hr{
 	border : 1px solid #dbdbdb;
 	
+}
+.rincian{
+	background-color: #d4dbd4;
+	padding: 20px;
+	padding-right: 0px;
+	height: auto;
+	min-height: 200px;
+	width: auto;
+}
+.rincian h3{
+	margin-bottom: 30px;
+	font-weight: bold;
+}
+.rincian hr{
+	display: inline-block;
+	margin: 0px;
+	border: 1px solid #f2f2f2;
+	width: 75%;
+}
+.belanja p{
+	display: inline-block;
+	margin-right: 70px;
+}
+@media (max-width: 992px){
+.belanja p{
+	display: inline-block;
+	margin-right: 20px;
+}
+
+}
+.right{
+	float: right;
+}
+.total{
+	font-weight: bold;
+	color: #1382a5;
+}
+.login-box{
+	border: 1px solid #1382a5;
+	background-color: white;
+	padding: 30px;
+	height: auto;
+	min-height: 170px;
+}
+.login-box input{
+	border: 1px solid #1382a5;
+}
+.btn-login:hover{
+	background-color: #017194;	
+	color: white;
+}
+.btn-login{
+	background-color: #1382a5;
+	color: white;
 }
