@@ -43,7 +43,18 @@
 						</ul>
 					</li>
 					<li <?php if ($page=='mengenai kami') {echo 'active';} ?>><a href="#">Mengenai Kami</a></li>
-					<li <?php if ($page=='login') {echo 'active';} ?>><a href="#">Login</a></li>
+					<li <?php if ($page=='login') {echo 'active';} ?>>
+
+					<?php 
+						if ($this->session->has_userdata('username')) {
+							echo '<a href="'.base_url('marketplace/logout').'">'.$this->session->userdata('nama').'</a>';
+						}
+						else{
+							echo '<a href="'.base_url('marketplace/login').'">Login</a>';
+						}
+					 ?>
+
+					</li>
 				</ul>
 			</div>
 		</div>

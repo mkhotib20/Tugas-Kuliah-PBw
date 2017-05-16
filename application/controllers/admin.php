@@ -29,6 +29,7 @@ class admin extends CI_Controller{
 	function masuk(){
 		$this->load->view('admin/login');
 	}
+	
 	function produk(){
 		if ($this->session->has_userdata('username')) {
 			$data = $this->data->read('produk')->result_array();
@@ -41,6 +42,7 @@ class admin extends CI_Controller{
 			redirect(base_url('admin/masuk'));
 		}
 	}
+
 	function tambah(){
 		if ($this->session->has_userdata('username')) {
 			$this->load->view('admin/layout/nav');
@@ -63,7 +65,7 @@ class admin extends CI_Controller{
 			$nama = $r['admin_nama'];
 			$email = $r['admin_email'];
 		}
-		echo '<br>';
+		
 		$hashed_password = $this->data->rahasia($password);
 		if ($username==$user) {
 			if ($hashed_password==$pass) {

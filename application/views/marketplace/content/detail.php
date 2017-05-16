@@ -48,7 +48,7 @@
 							cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 							proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 						</p>
-						<a style="height: 40px; margin-left: 400px; padding-top: 10px; " href="<?php echo base_url('marketplace/payment/anjay') ?>" class="btn btn-primary">Beli Sekarang</a>
+						<a style="height: 40px; margin-left: 400px; padding-top: 10px; " href="<?php echo base_url('marketplace/payment/'.$p['id_produk']) ?>" class="btn btn-primary">Beli Sekarang</a>
 					</div>
 					<?php } ?>
 				</div>

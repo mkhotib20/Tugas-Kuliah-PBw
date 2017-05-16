@@ -1,4 +1,10 @@
-
+<?php 
+foreach ($produk as $p ) {
+	$barang = $p['nama_produk'];
+	$harga = $p['harga_produk'];
+	$gambar = $p['gambar_produk'];
+}
+ ?>
 	<section class="product">
 		<div class="container">
 			<div class="produk">
@@ -7,8 +13,11 @@
 						<div class="rincian">
 							<h3>Rincian</h3>
 							<div class="belanja">
-								<p>Karudung</p>
-								<p class="right">Rp. 120.000,-</p>
+								<img style="width: 70%" src="<?php echo $gambar ?>">
+								<br>
+								<br>
+								<p><?php echo $barang ?></p>
+								<p class="right"><?php echo $harga ?></p>
 								<p>Ongkos Kirim</p>
 								<p class="right">Rp. 30.000,-</p>
 								<hr> +

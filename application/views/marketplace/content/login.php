@@ -6,7 +6,7 @@
 					<br>
 					<h4>Sudah punya akun? Masuk disini</h4>
 					<div class="login-box">
-						<form>
+						<?php echo form_open('marketplace/cek_login/'.$kode); ?>
 							<p><input type="text" class="form-control" placeholder="username" name="username"></p>
 							<p><input type="password" class="form-control" placeholder="password" name="password"></p>
 							<p style="float: right;"><input type="submit" value="Masuk" class="btn btn-default btn-login" name=""></p>
