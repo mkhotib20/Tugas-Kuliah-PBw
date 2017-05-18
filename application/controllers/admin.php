@@ -141,6 +141,16 @@ class admin extends CI_Controller{
 			redirect('admin/produk');
 		}
 	}
+	public function forUpdate($id){
+		if ($this->session->has_userdata('username')) {
+			$this->load->view('admin/layout/nav');
+			$this->load->view('admin/content/forUpdate', $id);
+			$this->load->view('admin/layout/footer');
+		}
+		else{
+			redirect(base_url('admin/masuk'));
+		}
+	}
 	public function update($id){
 		//$where = array('id_produk' => $id);
 		//$dataDB = $this->myModel->getBarang("where kode_barang = '$kode_barang' ");

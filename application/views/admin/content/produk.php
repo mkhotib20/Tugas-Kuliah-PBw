@@ -37,7 +37,7 @@
                                     <td class="center"><?php echo $p['kategori'] ?></td>
                                     <td class="center"><img style="width: 100%" src="<?php echo $p['gambar_produk'] ?>"></td>
                                     <td class="center">
-                                        <a class="btn btn-primary btn-outline" href="<?php echo base_url('admin/update/'.$p['id_produk']);?>">Perbaharui</a>
+                                        <a class="btn btn-primary btn-outline" href="<?php echo base_url('admin/forUpdate/'.$p['id_produk']);?>">Perbaharui</a>
                                         <a class="btn btn-danger btn-outline" href="<?php echo base_url('admin/delete/'.$p['id_produk']);?>">Hapus</a>
                                     </td>
                                 </tr>
