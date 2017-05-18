@@ -60,13 +60,19 @@ class marketplace extends CI_Controller{
 		
 	}
 	function login($kode=0, $page = 'login'){
-		$read = $this->data->readWh('produk', $kode, 'kategori')->result_array();
-		$id['kode'] = $kode;
-		$id['page'] = $page;
-		$this->load->view('marketplace/layout/header', $id);
-		$this->load->view('marketplace/layout/pagination', $id);
-		$this->load->view('marketplace/content/login', $id);
-		$this->load->view('marketplace/layout/footer');
+		if ($this->session->has_userdata('username')) {
+			redirect('marketplace');
+		}
+		else{
+			$read = $this->data->readWh('produk', $kode, 'kategori')->result_array();
+			$id['kode'] = $kode;
+			$id['page'] = $page;
+			$this->load->view('marketplace/layout/header', $id);
+			$this->load->view('marketplace/layout/pagination', $id);
+			$this->load->view('marketplace/content/login', $id);
+			$this->load->view('marketplace/layout/footer');
+
+		}
 	}
 	function cek_login($kode){
 		$username = $this->input->post('username');
@@ -104,7 +110,7 @@ class marketplace extends CI_Controller{
 		}
 	}
 	function logout(){
-		$this->session->sess_destroy();
+		unset($_SESSION['username']);		
 		redirect(base_url());
 	}
 
