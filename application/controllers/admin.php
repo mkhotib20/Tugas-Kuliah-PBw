@@ -147,43 +147,34 @@ class admin extends CI_Controller{
 		}
 	}
 	public function forUpdate($id){
-		if ($this->session->has_userdata('username')) {
+		if ($this->session->has_userdata('username_admin')) {
+			$read = $this->data->readWh('produk', $id, 'id_produk');
+			$data['tampil'] = $read->result_array();
 			$this->load->view('admin/layout/nav');
-			$this->load->view('admin/content/forUpdate', $id);
+			$this->load->view('admin/content/forUpdate', $data);
 			$this->load->view('admin/layout/footer');
+
 		}
 		else{
 			redirect(base_url('admin/masuk'));
 		}
 	}
-	public function update($id){
-		//$where = array('id_produk' => $id);
-		//$dataDB = $this->myModel->getBarang("where kode_barang = '$kode_barang' ");
-		$dataDB = $this->data->readWh('produk', $id, 'id_produk');
-		$data = array(
-			"id_produk" =>$dataDB[0]['id_produk'], 
-			"nama_produk" =>$dataDB[0]['nama_produk'],
-			"harga_produk" =>$dataDB[0]['harga_produk'], 
-			"kategori" =>$dataDB[0]['kategori'],
-		);
-		$id = $_POST['id_produk'];
-		$nama = $_POST['nama_produk'];
-		$harga = $_POST['harga_produk'];
-		$kategori = $_POST['kategori'];
-		$data_update = array(
-			'jumlah' => $jumlah, 
-			'id_produk' => $id,
-			'nama_produk' => $nama,
-			'harga_produk' => $harga,
-			'kategori' => $kategori
-		);
+	public function updatecoy($id){
 		$where = array('id_produk' => $id);
-		$tampung = $this->data->updateProduk('produk', $data_update, $where);
-		if($tampung >= 1){
+		$data = array(
+			"nama_produk" => $this->input->post('nama'),
+			"harga_produk" => $this->input->post('harga'),
+			"kategori" => $this->input->post('kategori')
+		);
+		if ($this->data->updateProduk('produk', $data, $where)) {
 			redirect('admin/produk');
-		} 
+		}
+		else
+			redirect('admin/forUpdate'.$id);
+
 	}
 	
 
 }
+
  ?>
