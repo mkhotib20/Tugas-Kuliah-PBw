@@ -7,7 +7,7 @@
 */
 class admin extends CI_Controller{	
 	function index(){
-		if ($this->session->has_userdata('username')) {
+		if ($this->session->has_userdata('username_admin')) {
 			$this->load->view('admin/layout/nav');
 			$this->load->view('admin/content/dashboard');
 			$this->load->view('admin/layout/footer');
@@ -17,7 +17,7 @@ class admin extends CI_Controller{
 		}
 	}
 	function setting(){
-		if ($this->session->has_userdata('username')) {
+		if ($this->session->has_userdata('username_admin')) {
 			$this->load->view('admin/layout/nav');
 			$this->load->view('admin/content/setting');
 			$this->load->view('admin/layout/footer');
@@ -27,11 +27,16 @@ class admin extends CI_Controller{
 		}
 	}
 	function masuk(){
-		$this->load->view('admin/login');
+		if ($this->session->has_userdata('username_admin')) {
+			redirect('admin');
+		}
+		else{
+			$this->load->view('admin/login');
+		}
 	}
 	
 	function produk(){
-		if ($this->session->has_userdata('username')) {
+		if ($this->session->has_userdata('username_admin')) {
 			$data = $this->data->read('produk')->result_array();
 			$tampil['produk'] = $data;
 			$this->load->view('admin/layout/nav');
@@ -44,7 +49,7 @@ class admin extends CI_Controller{
 	}
 
 	function tambah(){
-		if ($this->session->has_userdata('username')) {
+		if ($this->session->has_userdata('username_admin')) {
 			$this->load->view('admin/layout/nav');
 			$this->load->view('admin/content/tambah');
 			$this->load->view('admin/layout/footer');
@@ -70,9 +75,9 @@ class admin extends CI_Controller{
 		if ($username==$user) {
 			if ($hashed_password==$pass) {
 				$data = array(
-			        'username'  => $user,
-			        'email'     => $email,
-			        'nama' => $nama, 
+			        'username_admin'  => $user,
+			        'email_admin'     => $email,
+			        'nama_admin' => $nama, 
 				);
 				$this->session->set_userdata($data);
 				redirect(base_url('admin'));
@@ -88,7 +93,7 @@ class admin extends CI_Controller{
 
 	}
 	function logout(){
-		$this->session->sess_destroy();
+		unset($_SESSION['username_admin']);
 		redirect(base_url('admin'));
 	}
 	function tambahProduk(){
