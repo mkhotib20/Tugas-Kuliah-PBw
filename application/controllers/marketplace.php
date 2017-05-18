@@ -21,6 +21,15 @@ class marketplace extends CI_Controller{
 		$this->load->view('marketplace/content/product', $id);
 		$this->load->view('marketplace/layout/footer');
 	}
+
+	function setting($page = 'setting'){
+		$id['page'] = $page;
+		$this->load->view('marketplace/layout/header', $id);
+		$this->load->view('marketplace/layout/pagination', $id);
+		$this->load->view('marketplace/content/setting', $id);
+		$this->load->view('marketplace/layout/footer');
+	}
+
 	function detail($cat, $page = 'detail produk'){
 		$read = $this->data->readWh('produk', $cat, 'id_produk')->result_array();
 		foreach ($read as $r) {
@@ -62,18 +71,31 @@ class marketplace extends CI_Controller{
 	function cek_login($kode){
 		$username = $this->input->post('username');
 		$password = $this->input->post('password');
-		if ($username=='mkhotib') {
-			$data = array(
+		$read = $this->data->readWh('user_account', $username, 'id_user')->result_array();
+		$hashed_password = $this->data->rahasia($password);
+		foreach ($read as $r) {
+			$user = $r['id_user'];
+			$pass = $r['password_user'];
+			$nama = $r['nama_user'];
+			$email = $r['email_user'];
+		}
+		if ($username==$user) {
+			if ($hashed_password==$pass) {
+				$data = array(
 			        'username'  => $username,
-			        'email'     => 'mkhotib@gmail.com',
-			        'nama' => 'Muhammad Khotib', 
+			        'email'     => $email,
+			        'nama' => $nama, 
 				);
-			$this->session->set_userdata($data);
-			if ($kode != 0) {
-				redirect('marketplace/payment/'.$kode);
+				$this->session->set_userdata($data);
+				if ($kode != 0) {
+					redirect('marketplace/payment/'.$kode);
+				}
+				else{
+					redirect('marketplace');
+				}
 			}
 			else{
-				redirect('marketplace');
+				echo 'kurang';
 			}
 			
 		}
@@ -87,19 +109,39 @@ class marketplace extends CI_Controller{
 	}
 
 	function email(){
-		
 		$this->load->library('email');
-		$config['protocol'] = 'sendmail';
-		$config['mailpath'] = '/usr/sbin/sendmail';
-		$config['charset'] = 'iso-8859-1';
-		$config['wordwrap'] = TRUE;
+	   $config = array();
+	   $config['charset'] = 'utf-8';
+	   $config['useragent'] = 'Codeigniter'; //bebas sesuai keinginan kamu
+	   $config['protocol']= "smtp";
+	   $config['mailtype']= "text";
+	   $config['smtp_host']= "ssl://smtp.gmail.com";
+	   $config['smtp_port']= "465";
+	   $config['smtp_timeout']= "5";
+	   $config['smtp_user']= "muhammad.khotib20@gmail.com";              //isi dengan email anda
+	   $config['smtp_pass']= "muhammad1998";            // isi dengan password dari email anda
+	   $config['crlf']="\r\n";
+	   $config['newline']="\r\n";
+	  
+	   $config['wordwrap'] = TRUE;
 
-		$this->email->initialize($config);
-		$this->email->to('mkhotib20@gmail.com');
-		$this->email->from('muhammad.khotib20@gmail.com','eHijab');
-		$this->email->subject('[Notifikasi Pendaftaran]');
-		$this->email->message('Silahkan klik ');
-		$this->email->send();
+	 //memanggil library email dan set konfigurasi untuk pengiriman email
+	   
+	   $this->email->initialize($config);
+	 //konfigurasi pengiriman kotak di view ke pengiriman email di gmail
+	   $this->email->from('muhammad.khotib20@gmail.com');
+	   $this->email->to('mkhotib20@gmail.com');
+	   $this->email->subject('Percobaan');
+	   $this->email->message('Ini Notifikasi');
+	  
+	   if($this->email->send())
+	   {
+	    echo "tutorial pengiriman email primasaja.com berhasil";
+	   }else
+	   {
+	    echo "tutorial pengiriman email primasaja.com gagal";
+	   }
+
 	}
 
 }

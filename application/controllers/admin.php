@@ -135,6 +135,10 @@ class admin extends CI_Controller{
 			echo 'yups ner';
 		}
 	}
+
+	function date(){
+		echo date('j  F Y ');
+	}
 	
 
 }
