@@ -43,11 +43,17 @@
 						</ul>
 					</li>
 					<li <?php if ($page=='mengenai kami') {echo 'active';} ?>><a href="#">Mengenai Kami</a></li>
-					<li <?php if ($page=='login') {echo 'active';} ?>>
+					<li class=" <?php if ($page=='login') {echo 'active';} ?> dropdown">
 
 					<?php 
 						if ($this->session->has_userdata('username')) {
-							echo '<a href="'.base_url('marketplace/logout').'">'.$this->session->userdata('nama').'</a>';
+							echo '
+							<a href="'.base_url('marketplace/logout').'" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <img class="img-circle" style="height: 30px;" src="'.base_url('assets/marketplace/img/profile_user/hanif.jpg').'"> '.$this->session->userdata('nama').' <span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="'.base_url('marketplace/#').'">Setting</a></li>
+								<li><a href="'.base_url('marketplace/logout').'">Logout</a></li>
+							</ul>
+							';
 						}
 						else{
 							echo '<a href="'.base_url('marketplace/login').'">Login</a>';

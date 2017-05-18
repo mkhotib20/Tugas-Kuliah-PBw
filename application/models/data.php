@@ -8,8 +8,8 @@ class data extends CI_Model
 	function read($table){
 		return $this->db->get($table);
 	}
-	function readWh($table, $where, $id){
-		return $this->db->get_where($table, array($id => $where));
+	function readWh($table, $id, $where){
+		return $this->db->get_where($table, array($where => $id));
 	}
 	function insertData($tabel, $data){
 		return $this->db->insert($tabel, $data);
