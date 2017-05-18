@@ -114,7 +114,6 @@ class admin extends CI_Controller{
 				'nama_produk' => $nama,
 				'harga_produk' => $harga,
 				'kategori' => $kategori,
-				'harga_produk' => $harga,
 				'gambar_produk' => $url,
 				'timestamp' => mdate(time()),
 				 
@@ -134,6 +133,40 @@ class admin extends CI_Controller{
 		if ($passLama == $password) {
 			echo 'yups ner';
 		}
+	}
+		public function delete($id){
+		$where = array('id_produk' => $id);
+		$tampung = $this->data->deleteProduck('produk', $where);
+		if($tampung>=0){
+			redirect('admin/produk');
+		}
+	}
+	public function update($id){
+		//$where = array('id_produk' => $id);
+		//$dataDB = $this->myModel->getBarang("where kode_barang = '$kode_barang' ");
+		$dataDB = $this->data->readWh('produk', $id, 'id_produk');
+		$data = array(
+			"id_produk" =>$dataDB[0]['id_produk'], 
+			"nama_produk" =>$dataDB[0]['nama_produk'],
+			"harga_produk" =>$dataDB[0]['harga_produk'], 
+			"kategori" =>$dataDB[0]['kategori'],
+		);
+		$id = $_POST['id_produk'];
+		$nama = $_POST['nama_produk'];
+		$harga = $_POST['harga_produk'];
+		$kategori = $_POST['kategori'];
+		$data_update = array(
+			'jumlah' => $jumlah 
+			'id_produk' => $id,
+			'nama_produk' => $nama,
+			'harga_produk' => $harga,
+			'kategori' => $kategori
+		);
+		$where = array('id_produk' => $id);
+		$tampung = $this->data->updateProduk('produk', $data_update, $where);
+		if($tampung >= 1){
+			redirect('admin/produk');
+		} 
 	}
 	
 

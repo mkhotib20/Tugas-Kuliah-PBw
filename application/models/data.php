@@ -25,5 +25,13 @@ class data extends CI_Model
 		$this->db->order_by('timestamp', 'DESC');
 		return $this->db->get($table);
 	}
+	public function deleteProduck($table, $where){
+		$tampung = $this->db->delete($table, $where);
+		return $tampung;
+	}
+	public function updateProduk($table, $data, $where){
+		$tampung = $this->db->update($table, $data, $where);
+		return $tampung;
+	}
 }
  ?>
