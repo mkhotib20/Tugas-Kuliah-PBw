@@ -133,8 +133,7 @@ class admin extends CI_Controller{
 		if ($passLama == $password) {
 			echo 'yups ner';
 		}
-	}
-<<<<<<< HEAD
+	} 
 		public function delete($id){
 		$where = array('id_produk' => $id);
 		$tampung = $this->data->deleteProduck('produk', $where);
@@ -157,7 +156,7 @@ class admin extends CI_Controller{
 		$harga = $_POST['harga_produk'];
 		$kategori = $_POST['kategori'];
 		$data_update = array(
-			'jumlah' => $jumlah 
+			'jumlah' => $jumlah, 
 			'id_produk' => $id,
 			'nama_produk' => $nama,
 			'harga_produk' => $harga,
@@ -168,11 +167,6 @@ class admin extends CI_Controller{
 		if($tampung >= 1){
 			redirect('admin/produk');
 		} 
-=======
-
-	function date(){
-		echo date('j  F Y ');
->>>>>>> ad937b4e365a18fa8fe8b7acb49cf41383a1ce6e
 	}
 	
 
