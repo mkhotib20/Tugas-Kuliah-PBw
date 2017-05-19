@@ -83,11 +83,13 @@ class admin extends CI_Controller{
 				redirect(base_url('admin'));
 			}
 			else{
-				redirect(base_url('admin'));
+				$this->session->set_flashdata('pesan', 'Maaf Password salah');
+				redirect(base_url('admin/masuk'));
 			}
 		}
 		else{
-				redirect(base_url('admin'));
+			$this->session->set_flashdata('pesan', 'Username belum terdaftar');
+			redirect(base_url('admin/masuk'));
 		}
 
 

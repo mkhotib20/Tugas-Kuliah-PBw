@@ -101,12 +101,14 @@ class marketplace extends CI_Controller{
 				}
 			}
 			else{
-				echo 'kurang';
+				$this->session->set_flashdata('pesan', 'Maaf Password salah');
+				redirect('marketplace/login');
 			}
 			
 		}
 		else{
-			echo 'salah';
+			$this->session->set_flashdata('pesan', 'Maaf Username anda tidak terdaftar');
+			redirect('marketplace/login');
 		}
 	}
 	function logout(){
