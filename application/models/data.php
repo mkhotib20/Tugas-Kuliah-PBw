@@ -42,6 +42,10 @@ class data extends CI_Model
 			AND
 			`order`.`user_order` = `user_account`.`id_user`'
 		);
+
+	}
+	public function deleteProduk($tabel, $where){
+		return $this->db->delete($tabel, $where);	
 	}
 }
  ?>

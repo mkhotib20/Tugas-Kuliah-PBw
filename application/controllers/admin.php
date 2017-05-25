@@ -16,16 +16,6 @@ class admin extends CI_Controller{
 			redirect(base_url('admin/masuk'));
 		}
 	}
-	function setting(){
-		if ($this->session->has_userdata('username_admin')) {
-			$this->load->view('admin/layout/nav');
-			$this->load->view('admin/content/setting');
-			$this->load->view('admin/layout/footer');
-		}
-		else{
-			redirect(base_url('admin/masuk'));
-		}
-	}
 	function masuk(){
 		if ($this->session->has_userdata('username_admin')) {
 			redirect('admin');
@@ -59,7 +49,42 @@ class admin extends CI_Controller{
 		}
 
 	}
+	
+	function latihan(){
+		if($this->session->has_userdata('latihan_username')){
+			echo 'ini halaman admin, selamat datang ';
+			echo $this->session->userdata('latihan_nama');
+			echo '<a href="'.base_url('admin/latihanlogout').'">Logout</a>';
+		}else{
+			redirect('admin/latihanlogin');
+		}
+	}
+	function latihanlogout(){
+		unset($_SESSION['latihan_username']);
+		redirect('admin/latihanlogin');
+	}
+	function latihanlogin(){
+		echo '
+			<form action="'.base_url('admin/latihancek').'">
+				<input type="text" name="username">
+				<input type="password" name="password">
+				<input type="submit">
+			</form>
 
+			';
+	}
+	public function latihancek(){
+		$username = $_POST['username'];
+		$password = $_POST['password'];
+		$nama = 'david';
+
+		if($username = 'david' && $password = 'david1'){
+			$this->session->set_userdata('latihan_username', $username);
+			$this->session->set_userdata('latihan_nama', $nama);
+			redirect('admin/latihan');
+			
+		}
+	}
 	function cek_login(){
 		$username = $this->input->post('username');
 		$password = $this->input->post('password');
@@ -116,11 +141,13 @@ class admin extends CI_Controller{
 			$nama = $this->input->post('nama');
 			$harga = $this->input->post('harga');
 			$kategori = $this->input->post('kategori');
+			$deskripsi = $this->input->post('deskripsi');
 			$data = array(
 				'id_produk' => $id,
 				'nama_produk' => $nama,
 				'harga_produk' => $harga,
 				'kategori' => $kategori,
+				'deskripsi' => $deskripsi,
 				'gambar_produk' => $url,
 				'timestamp' => mdate(time()),
 				 
@@ -129,23 +156,25 @@ class admin extends CI_Controller{
 			redirect($uri = base_url('admin/tambah'), $method = 'auto', $code = NULL);
 		}
 	}
-	function ubahPass(){
-		$username = $this->session->userdata('username');
-		$pasBaru = $this->
-		$data = $this->data->readWh('admin_user', $username)->result_array();
-		foreach ($data as $d) {
-			$password = $d['admin_password'];
-		}
-		$passLama = $this->data->rahasia($this->input->post('pass-lama'));
-		if ($passLama == $password) {
-			echo 'yups ner';
-		}
-	} 
-		public function delete($id){
+	public function delete($id){
 		$where = array('id_produk' => $id);
-		$tampung = $this->data->deleteProduck('produk', $where);
+		$tampung = $this->data->deleteProduk('produk', $where);
 		if($tampung>=0){
 			redirect('admin/produk');
+		}
+	}
+	public function deleteOrder($id){
+		$where = array('id_order' => $id);
+		$tampung = $this->data->deleteProduk('order', $where);
+
+		if($tampung>=0){
+			$this->session->set_flashdata('success', '
+        			<div class="alert alert-warning alert-dismissible" role="alert">
+					  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					  <strong>Success!</strong> Hapus Order Berhasil!
+					</div>
+        		');
+			redirect('admin/order');
 		}
 	}
 	public function forUpdate($id){
