@@ -13,6 +13,7 @@
                             Tabel Order eHijab
                         </div>
                         <div class="panel-body">
+                        <?php echo $this->session->flashdata('success') ?>
                         <br>
                         <br>
                         <div class="table-responsive">
@@ -27,6 +28,7 @@
                                     <th>Username Pemesan</th>
                                     <th>Alamat Pemesan</th>
                                     <th>Tagihan</th>
+                                    <th>Operasi</th>
 
                                 </tr>
                             </thead>
@@ -41,6 +43,7 @@
                                    <td style="width: 5px;"><?php echo $g['id_user'] ?></td>
                                    <td ><?php echo $g['alamat_user'] ?></td>
                                    <td><?php echo 'Rp. '.number_format($g['tagihan'], 2, ',', '.'); ?></td>
+                                   <td><a class="btn btn-danger" href="<?php echo base_url('admin/deleteOrder/'. $g['id_order']) ?>"> Hapus</a></td>
                                 </tr>
                             <?php } ?>
                             </tbody>
