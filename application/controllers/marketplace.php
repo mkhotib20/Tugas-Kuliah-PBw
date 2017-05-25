@@ -195,6 +195,12 @@ class marketplace extends CI_Controller{
 			        'gambar' => $gambar, 
 				);
 				$this->session->set_userdata($data);
+				$this->session->set_flashdata('success', '
+        			<div class="alert alert-success alert-dismissible" role="alert">
+					  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					  <strong>Berhasil!</strong> Selamat datang '.$nama.'  
+					</div>
+        		');
 				if ($kode != 0) {
 					redirect('marketplace/payment/'.$kode.'/'.$warna.'/'.$jumlah);
 				}
@@ -221,7 +227,14 @@ class marketplace extends CI_Controller{
 	function logout(){
 		unset($_SESSION['username']);		
 		redirect(base_url());
+		$this->session->set_flashdata('success', '
+        			<div class="alert alert-success alert-dismissible" role="alert">
+					  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					  <strong>Berhasil!</strong> Anda berhasil keluar  
+					</div>
+        		');
 	}
+
 
 	function email($receiver_email, $akun){
 			$sender_email = "admin@ehijab.com";
