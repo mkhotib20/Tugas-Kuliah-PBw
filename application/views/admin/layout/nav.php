@@ -70,6 +70,10 @@
                         </li>
                         <li>
                             <a href="<?php echo base_url('admin/tambah') ?>"><i class="fa fa-edit fa-fw"></i> Input Product</a>
+                        </li>
+                        <li>
+                            <a href="<?php echo base_url('admin/order') ?>"><i class="fa fa-edit fa-fw"></i> Order</a>
+                        </li>
                     </ul>
                 </div>
             </div>

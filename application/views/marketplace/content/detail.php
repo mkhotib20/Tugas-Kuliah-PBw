@@ -22,22 +22,22 @@
 						<h1><?php echo $p['nama_produk'] ?></h1>
 						<h3><?php echo 'Rp. '.number_format($p['harga_produk'], 2, ',', '.'); ?></h3>
 						<br>
-						<form>
+						<form method="get" action="<?php echo base_url('marketplace/po/').$p['id_produk'] ?>">
 
 							<p class="col-md-3">
 								<span>Jumlah : </span>
-								<input value="1" onkeypress="return hanyaAngka(event)" placeholder="Jumlah" class="form-control" class="form-control" >
+								<input value="1" type="text" name="jumlah" onkeypress="return hanyaAngka(event)" placeholder="Jumlah" class="form-control" class="form-control" >
 							</p>
 
 							<p class="col-md-3">
 								<span>Warna : </span>
-								<select class="form-control">
+								<select name="warna" class="form-control">
 									<option>Merah</option>
 									<option>Biru</option>
 									<option>Hijau</option>
 								</select>						
 							</p>
-						</form>
+						
 						<br>
 						<p class="col-md-12">
 							<h1>Deskripsi Produk : </h1>
@@ -48,7 +48,8 @@
 							cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 							proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 						</p>
-						<a style="height: 40px; margin-left: 400px; padding-top: 10px; " href="<?php echo base_url('marketplace/payment/'.$p['id_produk']) ?>" class="btn btn-primary">Beli Sekarang</a>
+						<input type="submit" style="height: 40px; margin-left: 400px; padding-top: 10px; "  class="btn btn-primary" value="Beli Sekarang" >
+						</form>
 					</div>
 					<?php } ?>
 				</div>

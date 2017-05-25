@@ -25,11 +25,11 @@
         		<a class="navbar-brand" href="<?php echo base_url(); ?>">eHijab</a>
 			</div>
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-				<form class="navbar-form navbar-left" role="search">
+				<form action="<?php echo base_url('marketplace/searchResult') ?>" method="post" class="navbar-form navbar-left">
 					<div class="input-group src">
-			            <input style="border: none; height: 32px" type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
+			            <input style="border: none; height: 32px" type="text" class="form-control" placeholder="Search" name="srch-term">
 			            <div class="input-group-btn">
-			                <button style="border: none;" class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+			                <button type="submit" style="border: none;" class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
 			            </div>
 			        </div>
 				</form>
@@ -48,9 +48,11 @@
 					<?php 
 						if ($this->session->has_userdata('username')) {
 							echo '
-							<a href="'.base_url('marketplace/logout').'" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <img class="img-circle" style="height: 30px;" src="'.base_url('assets/marketplace/img/profile_user/hanif.jpg').'"> '.$this->session->userdata('nama').' <span class="caret"></span></a>
+							<a href="'.base_url('marketplace/logout').'" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <img class="img-circle" style="height: 30px;" src="'.$this->session->userdata('gambar').'"> '.$this->session->userdata('nama').' <span class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<li><a href="'.base_url('marketplace/#').'">Setting</a></li>
+								<li><a href="'.base_url('marketplace/setting').'">Update Profile</a></li>
+								<li><a href="'.base_url('marketplace/#').'">Change Password</a></li>
+								<li><a href="'.base_url('marketplace/#').'">Check Order</a></li>
 								<li><a href="'.base_url('marketplace/logout').'">Logout</a></li>
 							</ul>
 							';

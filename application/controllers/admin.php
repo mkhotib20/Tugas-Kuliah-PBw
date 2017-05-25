@@ -175,6 +175,18 @@ class admin extends CI_Controller{
 			redirect('admin/forUpdate'.$id);
 
 	}
+	function order(){
+		if ($this->session->has_userdata('username_admin')) {
+			$data = $this->data->selectOrder()->result_array();
+			$tampil['order'] = $data;
+			$this->load->view('admin/layout/nav');
+			$this->load->view('admin/content/order', $tampil);
+			$this->load->view('admin/layout/footer');
+		}
+		else{
+			redirect(base_url('admin/masuk'));
+		}
+	}
 	
 
 }
