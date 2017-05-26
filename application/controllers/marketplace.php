@@ -148,7 +148,7 @@ class marketplace extends CI_Controller{
 	}
 	function searchResult($page = 'search result'){
 		$keyword = $_POST['srch-term'];
-		$data = $this->data->search('produk', 'nama_produk', $keyword, 'timestamp')->result_array();
+		$data = $this->data->search('produk', 'nama_produk', $keyword)->result_array();
 		$rows = $this->data->search('produk', 'nama_produk', $keyword)->num_rows();
 		if ($rows>0) {
 			$tampil['error'] = '';

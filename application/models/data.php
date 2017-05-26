@@ -16,6 +16,9 @@ class data extends CI_Model
 	function insertData($tabel, $data){
 		return $this->db->insert($tabel, $data);
 	}
+	function search($table, $kolom, $keyword){
+		return $this->db->query("SELECT * FROM $table WHERE $kolom LIKE '%$keyword%'");
+	}
 	function rahasia($password){
 		$key = $this->config->item('encryption_key');
 	    $salt1 = hash('sha512', $key . $password);
@@ -31,6 +34,7 @@ class data extends CI_Model
 		$tampung = $this->db->update($table, $data, $where);
 		return $tampung;
 	}
+		
 	function selectOrder(){
 		return $this->db->query('SELECT 
 			`order`.*, `produk`.*,`user_account`.*
