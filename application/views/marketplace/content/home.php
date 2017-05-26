@@ -6,7 +6,9 @@
 		    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
 		    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
 		  </ol>
-
+		  <div style="z-index: 10; width: 100%; position: absolute;">
+		  	<?php echo $this->session->flashdata('success') ?>
+		  </div>
 		  <!-- Wrapper for slides -->
 		  <div class="carousel-inner" role="listbox">
 		    <div class="item active">
