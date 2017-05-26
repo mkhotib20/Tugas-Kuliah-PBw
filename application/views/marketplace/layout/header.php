@@ -51,7 +51,7 @@
 							<a href="'.base_url('marketplace/logout').'" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <img class="img-circle" style="height: 30px;" src="'.$this->session->userdata('gambar').'"> '.$this->session->userdata('nama').' <span class="caret"></span></a>
 							<ul class="dropdown-menu">
 								<li><a href="'.base_url('marketplace/setting').'">Update Profile</a></li>
-								<li><a href="'.base_url('marketplace/#').'">Change Password</a></li>
+								<li><a href="'.base_url('marketplace/changePass').'">Change Password</a></li>
 								<li><a href="'.base_url('marketplace/#').'">Check Order</a></li>
 								<li><a href="'.base_url('marketplace/logout').'">Logout</a></li>
 							</ul>

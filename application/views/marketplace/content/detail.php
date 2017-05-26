@@ -10,12 +10,6 @@
 				<div class="row">
 					<div class="col-md-6">
 						<img class="main-img" src="<?php echo $p['gambar_produk'] ?>">
-
-						<div class="row">
-							<div class="col-md-2">
-								<img class="sub-img" src="<?php echo base_url('assets/marketplace/img/slide-1.jpg') ?>">
-							</div>
-						</div>
 					</div>
 					
 					<div class="col-md-6">
@@ -43,7 +37,7 @@
 							<h1>Deskripsi Produk : </h1>
 							<?php echo $p['deskripsi'] ?>
 						</p>
-						<input type="submit" style="height: 40px; margin-left: 400px; padding-top: 10px; "  class="btn btn-primary" value="Beli Sekarang" >
+						<input type="submit" style="height: 40px; float: right; padding-top: 10px; "  class="btn btn-primary" value="Beli Sekarang" >
 						</form>
 					</div>
 					<?php } ?>

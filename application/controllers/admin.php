@@ -27,7 +27,7 @@ class admin extends CI_Controller{
 	
 	function produk(){
 		if ($this->session->has_userdata('username_admin')) {
-			$data = $this->data->read('produk')->result_array();
+			$data = $this->data->read('produk', 'timestamp')->result_array();
 			$tampil['produk'] = $data;
 			$this->load->view('admin/layout/nav');
 			$this->load->view('admin/content/produk', $tampil);
@@ -153,13 +153,25 @@ class admin extends CI_Controller{
 				 
 				);
 			$insert= $this->data->insertData('produk', $data);
-			redirect($uri = base_url('admin/tambah'), $method = 'auto', $code = NULL);
+					$this->session->set_flashdata('tambahBerhasil', '
+							<div class="alert alert-success alert-dismissible" role="alert">
+							  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							  <strong>Success!</strong> Berhasil menambahkan produk
+							</div>
+						');
+			redirect($uri = base_url('admin/produk'), $method = 'auto', $code = NULL);
 		}
 	}
 	public function delete($id){
 		$where = array('id_produk' => $id);
 		$tampung = $this->data->deleteProduk('produk', $where);
 		if($tampung>=0){
+			$this->session->set_flashdata('tambahBerhasil', '
+							<div class="alert alert-warning	 alert-dismissible" role="alert">
+							  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							  <strong>Success!</strong> Berhasil Menghapus produk
+							</div>
+						');
 			redirect('admin/produk');
 		}
 	}

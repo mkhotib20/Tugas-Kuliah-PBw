@@ -16,6 +16,7 @@
                         <a class="btn btn-success" href="<?php echo base_url('admin/tambah') ?>">+ Tambah Produk</a>
                         <br>
                         <br>
+                        <?php echo $this->session->flashdata('tambahBerhasil') ?>
                         <div class="table-responsive">
                             <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                             <thead>

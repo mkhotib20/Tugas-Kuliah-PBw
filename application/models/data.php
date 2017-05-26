@@ -5,10 +5,12 @@
 class data extends CI_Model
 {
 	
-	function read($table){
+	function read($table, $order=''){
+		$this->db->order_by($order, 'desc');
 		return $this->db->get($table);
 	}
-	function readWh($table, $id, $where){
+	function readWh($table, $id, $where, $order=''){
+		$this->db->order_by($order, 'DESC');
 		return $this->db->get_where($table, array($where => $id));
 	}
 	function insertData($tabel, $data){

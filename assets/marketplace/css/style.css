@@ -25,8 +25,9 @@ body{
 .navbar{
 	padding-top: 10px;
 	margin-bottom: 0px;
-	background-color: #1382a5;
+	background-color: #2c689e;
 	border: 0px solid white;
+	box-shadow: 0px 0px 10px;
 	border-radius: 0px;
 }
 .navbar-brand{
@@ -171,10 +172,36 @@ body{
 	background-color: #136a89;
 	color: white;
 }
+.image-frame {
+  margin: 5px;
+  position: relative;
+  color: #333;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+.image-caption {
+  display: none;
+  position: absolute;
+  bottom: 0px;
+  padding: 5px;
+  background: rgba(35, 35, 35, 0.7);
+  color: white;
+  width: 100%;
+  opacity: 0.8;
+}
+.image-frame img{
+  width: 100%;
+}
+.image-frame:hover img{
+  -webkit-filter: brightness(60%);
+    filter: brightness(60%);
+}
 footer{
 	padding: 20px;
 	height: 60px;
-	background-color: black;
+	background-color: #111111;
 }
 footer p{
 	float: right;

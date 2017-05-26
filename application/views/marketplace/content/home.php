@@ -15,7 +15,7 @@
 		      <img src="<?php echo base_url('assets/marketplace/img/slide-1.jpg') ?>" alt="...">
 		      <div class="carousel-caption">
 		      	<br>
-		      	<h3>COBAJA</h3>
+		      	<h3>Kerudung Andalan</h3>
 		      </div>
 		    </div>
 		    <div class="item ">

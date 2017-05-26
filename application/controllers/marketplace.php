@@ -10,6 +10,75 @@ class marketplace extends CI_Controller{
 		$this->load->view('marketplace/content/home', $tampil);
 		$this->load->view('marketplace/layout/footer');
 	}
+	function gantiPass(){
+		$username = $this->session->userdata('username');
+		$passLama = $this->input->post('passLama');
+		$passBaru = $this->input->post('passBaru');
+		$confPassBaru = $this->input->post('confPassBaru');
+		$data = $this->data->readWh('user_account', $username, 'id_user')->result_array();
+		foreach ($data as $d) {
+			$password = $d['password_user'];
+		}
+		$hashed_password = $this->data->rahasia($passLama);
+		if ($passBaru==$confPassBaru) {
+			if ($hashed_password==$password) {
+				$hashedPassBaru = $this->data->rahasia($passBaru);
+				$data = array('password_user' => $hashedPassBaru);
+				$where = array('id_user' => $username);
+				if ($this->data->updateProduk('user_account', $data, $where)) {
+					$this->session->set_flashdata('msgSc', '
+							<div class="alert alert-success alert-dismissible" role="alert">
+							  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							  <strong>Success!</strong> Update Password Berhasil
+							</div>
+						');
+					redirect('marketplace/changePass');
+				}
+				else{
+					$this->session->set_flashdata('msgSc', '
+							<div class="alert alert-danger alert-dismissible" role="alert">
+							  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							  <strong>Failed!</strong> Gagal mengganti password
+							</div>
+						');
+					redirect('marketplace/changePass');
+				}
+			}
+			else{
+				$this->session->set_flashdata('msgSc', '
+							<div class="alert alert-danger alert-dismissible" role="alert">
+							  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							  <strong>Failed!</strong> Password yang anda masukan salah
+							</div>
+						');
+					redirect('marketplace/changePass');
+			}
+		}
+		else{
+			$this->session->set_flashdata('msgSc', '
+							<div class="alert alert-danger alert-dismissible" role="alert">
+							  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							  <strong>Failed!</strong> Password tidak cocok
+							</div>
+						');
+					redirect('marketplace/changePass');
+		}
+	}
+	function changePass($page='ganti password'){
+		$id['page'] = $page;
+		if ($this->session->has_userdata('username')) {
+			$username = $this->session->userdata('username');
+			$data = $this->data->readWh('user_account', $username, 'id_user')->result_array();
+			$id['read'] = $data;
+			$this->load->view('marketplace/layout/header', $id);
+			$this->load->view('marketplace/layout/pagination', $id);
+			$this->load->view('marketplace/content/setPass', $id);
+			$this->load->view('marketplace/layout/footer');
+		}
+		else{
+			redirect('marketplace');
+		}
+	}
 	function updateProfile(){
 		if ($this->session->has_userdata('username')) {
 			$config['upload_path']          = './assets/marketplace/img/profile_user';
@@ -69,7 +138,7 @@ class marketplace extends CI_Controller{
 		}
 	}
 	function product($cat, $page = 'product'){
-		$read = $this->data->readWh('produk', $cat, 'kategori')->result_array();
+		$read = $this->data->readWh('produk', $cat, 'kategori', 'timestamp')->result_array();
 		$id['produk'] = $read;
 		$id['page'] = $page;
 		$this->load->view('marketplace/layout/header', $id);
@@ -79,7 +148,7 @@ class marketplace extends CI_Controller{
 	}
 	function searchResult($page = 'search result'){
 		$keyword = $_POST['srch-term'];
-		$data = $this->data->search('produk', 'nama_produk', $keyword)->result_array();
+		$data = $this->data->search('produk', 'nama_produk', $keyword, 'timestamp')->result_array();
 		$rows = $this->data->search('produk', 'nama_produk', $keyword)->num_rows();
 		if ($rows>0) {
 			$tampil['error'] = '';
