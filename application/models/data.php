@@ -29,9 +29,6 @@ class data extends CI_Model
 		$tampung = $this->db->update($table, $data, $where);
 		return $tampung;
 	}
-	function search($table, $kolom, $keyword){
-		return $this->db->query("SELECT * FROM $table WHERE $kolom LIKE '%$keyword%'");
-	}
 	function selectOrder(){
 		return $this->db->query('SELECT 
 			`order`.*, `produk`.*,`user_account`.*
