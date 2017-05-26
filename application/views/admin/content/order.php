@@ -46,7 +46,7 @@
                                    <td><?php echo 'Rp. '.number_format($g['tagihan'], 2, ',', '.'); ?></td>
                                    <td><a class="btn btn-danger" href="<?php echo base_url('admin/deleteOrder/'. $g['id_order']) ?>"> Hapus</a></td>
                                    <td><?php if($g['status_order']==0) {
-                                           echo '<a class="btn btn-primary btn-outline" href="'.base_url('admin/validasi/'.$g['id_order']).'">Coba</a>';
+                                           echo '<a class="btn btn-primary btn-outline" href="'.base_url('admin/validasi/'.$g['id_order']).'">Validasi</a>';
                                        }else{
                                             echo '<a class="btn btn-success btn-outline" >Dibayar</a>';
                                        }
