@@ -1,10 +1,5 @@
 <?php 
-/**
-* 
-*/
-/**
-*
-*/
+
 class admin extends CI_Controller{	
 	function index(){
 		if ($this->session->has_userdata('username_admin')) {
@@ -226,6 +221,21 @@ class admin extends CI_Controller{
 		}
 		else{
 			redirect(base_url('admin/masuk'));
+		}
+	}
+	public function validasi($id){
+		$where = array('id_order' => $id);
+		$data ["status_order"] = 1;
+		if($this->data->updateProduk('order', $data, $where)){
+			$this->session->set_flashdata('success', '
+        			<div class="alert alert-success alert-dismissible" role="alert">
+					  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					  <strong>Success!</strong> Validasi Pembayaran Berhasil!
+					</div>
+        		');
+			redirect('admin/order');
+		}else{
+			redirect('admin/order');
 		}
 	}
 	

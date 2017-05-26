@@ -29,6 +29,7 @@
                                     <th>Alamat Pemesan</th>
                                     <th>Tagihan</th>
                                     <th>Operasi</th>
+                                    <th>Status</th>
 
                                 </tr>
                             </thead>
@@ -44,6 +45,13 @@
                                    <td ><?php echo $g['alamat_user'] ?></td>
                                    <td><?php echo 'Rp. '.number_format($g['tagihan'], 2, ',', '.'); ?></td>
                                    <td><a class="btn btn-danger" href="<?php echo base_url('admin/deleteOrder/'. $g['id_order']) ?>"> Hapus</a></td>
+                                   <td><?php if($g['status_order']==0) {
+                                           echo '<a class="btn btn-primary btn-outline" href="'.base_url('admin/validasi/'.$g['id_order']).'">Coba</a>';
+                                       }else{
+                                            echo '<a class="btn btn-success btn-outline" >Dibayar</a>';
+                                       }
+
+                                   ?></td>
                                 </tr>
                             <?php } ?>
                             </tbody>
