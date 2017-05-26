@@ -36,11 +36,6 @@
                                 <div class="form-group has-success">
                                     <input class="form-control" placeholder="Password" name="password" type="password" value="">
                                 </div>
-                                <div class="checkbox">
-                                    <label>
-                                        <input name="remember" type="checkbox" value="Remember Me">Remember Me
-                                    </label>
-                                </div>
                                 <input style="width: 100%" type="submit" value="MASUK" class="btn btn-success btn-outline" name="">
                             </fieldset>
                         </form>
