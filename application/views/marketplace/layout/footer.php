@@ -1,20 +1,24 @@
-<section style="background-color: #222; height: 200px; color: #aaaaaa" class="identity">
+<section style="background-color: #222; height: auto; min-height: 200px; color: #aaaaaa; padding-bottom: 20px;" class="identity">
 	<div class="container">
 	<br>
-	<div class="col-md-4">
-		<h4>Apa itu eHijab ?</h4>
+	<div  class="col-md-4">
+		<h4 class="contact-tit">Ikuti kami</h4>
+		<p>Untuk selalu mendapatkan informasi dan penawaran dari eHijab, silahkan ikuti sesioal media di bawah ini :</p>
 		<br>
-		<p>eHijab merupakan marketplace untuk mushlimah yang ingin memiliki style hijab modern, tapi masih memenuhi syariat islam.</p>
+		<a href="#" class="btn btn-default main-ico" ><i style="font-size: 50px;" class="fa fa-instagram" aria-hidden="true"></i></a> 
+		<a href="#" class="btn btn-default main-ico" ><i style="font-size: 50px;" class="fa fa-twitter" aria-hidden="true"></i></a>
+		<a href="#" class="btn btn-default main-ico" ><i style="font-size: 50px;" class="fa fa-facebook" aria-hidden="true"></i></a>
+		<br>
 	</div>
 	<div class="col-md-1">
 		
 	</div>
 	<div class="col-md-3">
-		<h4>Hubungi Kami</h4>
+		<h4 class="contact-tit">Hubungi Kami</h4>
 		<p>Nomor : 08667782	78278</p>
 	</div>
 	<div class="col-md-4">
-		<h4>Alamat Toko : </h4>
+		<h4 class="contact-tit">Alamat Toko : </h4>
 		<p>Jl. Kejawan Gebang IV nomor 19H, 60001</p>
 		<p>Sukolilo, Kota Surabaya</p>
 		<p>Jawa Timur</p>

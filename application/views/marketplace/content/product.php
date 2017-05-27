@@ -11,8 +11,11 @@
 							<img style="max-height: 170px;" src="<?php echo $p['gambar_produk'] ?>">
 						</div>
 						<div class="caption">
-							<p><span class="glyphicon glyphicon-tags"/> <?php echo $p['kategori'] ?></p>
-							<h3><?php echo $p['nama_produk'] ?></h3>
+							<ul class="info-produk">
+								<li><span class="glyphicon glyphicon-tags"/> <?php echo $p['kategori'] ?></li>
+								<li><span class="glyphicon glyphicon-eye-open"/> <?php echo $p['popularitas_produk'] ?></li>
+							</ul>
+							<h4><?php echo $p['nama_produk'] ?></h4>
 							<p><?php echo 'Rp. '.number_format($p['harga_produk'], 2, ',', '.'); ?></p>
 							<a class="btn btn-default" href="<?php echo base_url('marketplace/detail/'.$p['id_produk']); ?>">Detail</a>							
 						</div>

@@ -1,4 +1,3 @@
-
 	<section class="product">
 		<div class="container">
 			<h1>Detail</h1>
@@ -14,7 +13,7 @@
 					
 					<div class="col-md-6">
 						<h1><?php echo $p['nama_produk'] ?></h1>
-						<h3><?php echo 'Rp. '.number_format($p['harga_produk'], 2, ',', '.'); ?></h3>
+						<h3 class="prc"><?php echo 'Rp. '.number_format($p['harga_produk'], 2, ',', '.'); ?></h3>
 						<br>
 						<form method="get" action="<?php echo base_url('marketplace/po/').$p['id_produk'] ?>">
 
@@ -57,10 +56,13 @@
 							<img style="max-height: 170px;" src="<?php echo $t['gambar_produk'] ?>">
 						</div>
 						<div class="caption">
-						<p><span class="glyphicon glyphicon-tags"/> <?php echo $p['kategori'] ?></p>
-							<h3><?php echo $t['nama_produk'] ?></h3>
+							<ul class="info-produk">
+								<li><span class="glyphicon glyphicon-tags"/> <?php echo $t['kategori'] ?></li>
+								<li><span class="glyphicon glyphicon-eye-open"/> <?php echo $t['popularitas_produk'] ?></li>
+							</ul>
+							<h4><?php echo $t['nama_produk'] ?></h4>
 							<p><?php echo 'Rp. '.number_format($p['harga_produk'], 2, ',', '.'); ?></p>
-							<a class="btn btn-default" href="<?php echo base_url('marketplace/detail/'.$p['id_produk']); ?>">Detail</a>							
+							<a class="btn btn-default" href="<?php echo base_url('marketplace/detail/'.$t['id_produk']); ?>">Detail</a>							
 						</div>
 					</div>
 				</div>

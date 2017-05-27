@@ -11,6 +11,9 @@
     <link rel="shortcut icon" type="image/png" href="<?php echo base_url('assets/marketplace/img/favicon.png'); ?>"/>
     <link href="<?php echo base_url('assets/marketplace/css/bootstrap.min.css') ?>" rel="stylesheet">
     <link href="<?php echo base_url('assets/marketplace/css/style.css') ?>" rel="stylesheet">
+   	<script src="https://use.fontawesome.com/34d89d3f6e.js"></script>
+
+
 </head>
 <body>
 <nav class="navbar navbar-default navbar-fixed-top ">
@@ -42,7 +45,6 @@
 							<li><a href="<?php echo base_url('marketplace/product/kotak'); ?>">Kotak</a></li>
 						</ul>
 					</li>
-					<li <?php if ($page=='mengenai kami') {echo 'active';} ?>><a href="#">Mengenai Kami</a></li>
 					<li class=" <?php if ($page=='login') {echo 'active';} ?> dropdown">
 
 					<?php 

@@ -4,8 +4,10 @@ class marketplace extends CI_Controller{
 	
 	function index($page = 'home'){
 		$data = $this->data->readNew('produk')->result_array();
+		$dataPop = $this->data->read('produk', 'popularitas_produk', 4)->result_array();
 		$tampil['produk'] = $data;
 		$id['page'] = $page;
+		$id['dataPop'] = $dataPop;
 		$this->load->view('marketplace/layout/header', $id);
 		$this->load->view('marketplace/content/home', $tampil);
 		$this->load->view('marketplace/layout/footer');
@@ -182,8 +184,13 @@ class marketplace extends CI_Controller{
 		$read = $this->data->readWh('produk', $cat, 'id_produk')->result_array();
 		foreach ($read as $r) {
 			$kategori = $r['kategori'];
+			$pop = $r['popularitas_produk'];
 		}
-		$terkait = $this->data->readWh('produk', $kategori, 'kategori')->result_array();
+		$jumlahPop = $pop + 1;
+		$where = array('id_produk' => $cat);
+		$popularitas = array('popularitas_produk' => $jumlahPop);
+		$this->data->updateProduk('produk', $popularitas, $where);
+		$terkait = $this->data->readWh('produk', $kategori, 'kategori', 'timestamp' ,4)->result_array();
 		$id['produk'] = $read;
 		$id['produkTerkait'] = $terkait;
 		$id['page'] = $page;
