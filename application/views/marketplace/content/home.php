@@ -15,11 +15,11 @@
 		      <img src="<?php echo base_url('assets/marketplace/img/slide-1.jpg') ?>" alt="...">
 		      <div class="carousel-caption">
 		      	<br>
-		      	<h3>Kerudung Andalan</h3>
+		      	<h3 class="main-tit">Kerudung Andalan</h3>
 		      </div>
 		    </div>
 		    <div class="item ">
-		      <img src="<?php echo base_url('assets/marketplace/img/slide-1.jpg') ?>" alt="...">
+		      <img src="<?php echo base_url('assets/marketplace/img/slide-2.jpg') ?>" alt="...">
 		      <div class="carousel-caption">
 		      	<br>
 		      	<h3>COBAJA</h3>
