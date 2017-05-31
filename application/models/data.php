@@ -1,7 +1,4 @@
 <?php 
-/**
-* 
-*/
 class data extends CI_Model
 {
 	
