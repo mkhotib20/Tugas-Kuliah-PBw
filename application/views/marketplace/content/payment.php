@@ -3,7 +3,10 @@ foreach ($produk as $p ) {
 	$barang = $p['nama_produk'];
 	$harga = $p['harga_produk'];
 	$gambar = $p['gambar_produk'];
-	$tagihan = $harga*$jumlah;
+	$total = $harga*$jumlah;
+	$ongkir = 15000;
+	$kodeBayar = rand(1,999);
+	$tagihan = $total+$ongkir+$kodeBayar;
 }
  ?>
 
@@ -18,13 +21,15 @@ foreach ($produk as $p ) {
 								<br>
 								<br>
 								<p><?php echo $barang ?></p>
-								<p class="right"><?php echo 'Rp. '.number_format($tagihan, 2, ',', '.'); ?></p>
+								<p class="right"><?php echo 'Rp. '.number_format($total, 2, ',', '.'); ?></p>
 								<p>Ongkos Kirim</p>
-								<p class="right">Rp. 30.000,-</p>
+								<p class="right"><?php echo 'Rp. '.number_format($ongkir, 2, ',', '.'); ?></p>
+								<p>Ongkos Kirim</p>
+								<p class="right"><?php echo 'Rp. '.number_format($kodeBayar, 2, ',', '.'); ?></p>
 								<hr> +
 								<div class="total">
 									<p>Total</p>
-									<p class="right">Rp. 150.000,-</p>
+									<p class="right"><?php echo 'Rp. '.number_format($tagihan, 2, ',', '.'); ?></p>
 								</div>
 							</div>
 						</div>

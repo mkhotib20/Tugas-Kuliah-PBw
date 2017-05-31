@@ -16,7 +16,7 @@
 						<p><input readonly="" value="<?php echo $username ?>" type="text" class="form-control" name="username"></p>
 						<p><input value="<?php echo $nama ?>" type="text" class="form-control" name="nama"></p>
 						<p><input value="<?php echo $email ?>" type="text" class="form-control" name="email"></p>
-						<p><input value="<?php echo $alamat ?>" type="text" class="form-control" name="alamat"></p>
+						<p><input value="<?php echo $alamat ?>" type="text" placeholder="Alamat" class="form-control" name="alamat"></p>
 					</div>
 					<div class="col-md-6">
 						<img style="height: 200px;" id="preview_gambar" src="<?php echo $gambar ?>" alt="Gambar Anda" />

@@ -127,8 +127,18 @@ class admin extends CI_Controller{
 
         $this->load->library('upload', $config);
         if ( ! $this->upload->do_upload('gambar')) {
-			echo print_r(array('error' => $this->upload->display_errors()));	
-			//redirect(base_url());
+        	$coba = array('error' => $this->upload->display_errors());
+        	foreach ($coba as $c) {
+        		# code...
+        	}
+        	$this->session->set_flashdata('tambahBerhasil', '
+				<div class="alert alert-warning alert-dismissible" role="alert">
+				  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				  <strong>Gagal!</strong> '.$c.'
+				</div>
+			');	
+
+			redirect(base_url('admin/tambah'));
 		}
 		else{
 			$url = base_url().$config['upload_path'].$this->upload->data('file_name');

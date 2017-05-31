@@ -7,6 +7,7 @@
                 <!-- /.col-lg-12 -->
             </div>
             <!-- /.row -->
+            <?php echo $this->session->flashdata('tambahBerhasil') ?>
             <div class="row">
                 <div class="col-lg-12">
                     <div class="panel panel-default">
@@ -24,7 +25,7 @@
                                     <option>Pasminah</option>
                                     <option>Kotak</option>
                                 </select></p>
-                                <p class="col-md-6"><input type="file" class="form-control" placeholder="Harga" name="gambar"></p>
+                                    <p class="col-md-6"><input type="file" class="form-control" placeholder="Harga" name="gambar"></p>
                                 <br>
                                 <p class="col-lg-12"><input type="submit" value="Tambah" class="btn btn-warning" name=""></p>
                             </form>

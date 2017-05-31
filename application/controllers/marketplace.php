@@ -12,6 +12,20 @@ class marketplace extends CI_Controller{
 		$this->load->view('marketplace/content/home', $tampil);
 		$this->load->view('marketplace/layout/footer');
 	}
+	function resend(){
+		if ($this->session->has_userdata('username')) {
+			$email = $this->session->userdata('email');
+			$username = $this->session->userdata('username');
+			$this->email($email, $username);
+			$this->session->set_flashdata('sukses', '
+							<div class="alert alert-success alert-dismissible" role="alert">
+							  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							  <strong>Success!</strong> Silahkan cek email anda, email duah dikirim kembali
+							</div>
+						');
+			redirect('marketplace/veriv');
+		}
+	}
 	function gantiPass(){
 		$username = $this->session->userdata('username');
 		$passLama = $this->input->post('passLama');
@@ -372,7 +386,6 @@ class marketplace extends CI_Controller{
 			echo 'gagal';
 		}
 	}
-
 	function finish($id_order, $page='finish order'){
 		$id['page'] = $page;
 		$id['id_order'] = $id_order;
