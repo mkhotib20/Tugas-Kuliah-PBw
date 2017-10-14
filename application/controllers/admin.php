@@ -19,40 +19,6 @@ class admin extends CI_Controller{
 			$this->load->view('admin/login');
 		}
 	}
-	function register(){
-		if($this->session->has_userdata('username_admin')){
-			redirect('admin');
-		}else{
-			$this->load->view('admin/content/register');
-		}
-	}
-	function tambahadmin(){
-		$username = $this->input->post('username');
-		$nama = $this->input->post('nama');
-		$email = $this->input->post('email');
-		$password = $this->input->post('password');
-		$hashed_password = $this->data->rahasia($password);
-		$data = array(
-			'admin_username' => $username,
-			'admin_nama' => $nama,
-			'admin_email' => $email,
-			'admin_password' => $hashed_password
-		);
-		if($this->data->insertData('admin_user', $data)){
-			$session = array(
-				'username_admin' => $username,
-				'nama_admin' => $nama,
-				'email_admin' => $email,				
-				);
-			$this->session->set_userdata($session);
-			redirect('admin');
-		}else{
-			echo "gagal";
-		}
-		
-
-
-	}
 	
 	function produk(){
 		if ($this->session->has_userdata('username_admin')) {

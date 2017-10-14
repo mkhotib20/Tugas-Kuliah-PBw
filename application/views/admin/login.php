@@ -28,7 +28,7 @@
                     </div>
                     <div class="panel-body">
                         <?php echo form_open('admin/cek_login'); ?>
-                           
+                            <fieldset>
                             <p style="color: red;"><?php echo $this->session->flashdata('pesan');?></p>
                                 <div class="form-group has-success">
                                     <input class="form-control" placeholder="Username" name="username" type="username" autofocus>
@@ -36,9 +36,8 @@
                                 <div class="form-group has-success">
                                     <input class="form-control" placeholder="Password" name="password" type="password" value="">
                                 </div>
-                                <input style="width: 100%" type="submit" value="MASUK" class="btn btn-success btn-outline" name="">                     
-                            <br> <br>
-                            <a href="<?php echo base_url('admin/register') ?>" class="btn btn-success">Tambah</a>
+                                <input style="width: 100%" type="submit" value="MASUK" class="btn btn-success btn-outline" name="">
+                            </fieldset>
                         </form>
                     </div>
                 </div>
